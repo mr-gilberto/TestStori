@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Test</string>
+    <string name="name_input">Nombre</string>
+    <string name="surname_input">Apellido</string>
+
+    <string name="user_email">Email</string>
+    <string name="user_surname">Apellido</string>
+    <string name="password">Contraseña</string>
+    <string name="password_repeat">Repetir contraseña</string>
+    <string name="log_in">INICIAR SESIÓN</string>
+    <string name="register">REGISTRARSE</string>
+    <string name="dismiss">Cerrar</string>
+
+
+    <string name="error_empty_field">Campo obligatorio</string>
+    <string name="error_invalid_name">Introduce tu nombre</string>
+    <string name="error_invalid_surname">Introduce tu apellido</string>
+    <string name="error_invalid_user">Introduce tu usuario</string>
+    <string name="error_invalid_email">Introduce un email valido</string>
+    <string name="error_invalid_password">Introduce tu contraseña</string>
+    <string name="error_invalid_repeated_password">Introduce tu contraseña repetida</string>
+    <string name="error_invalid_not_match_password">La contraseña no coincide</string>
+    <string name="error_invalid_login">Usuario o contraseña incorrectos</string>
+    <string name="generic_error">Ocurrio un error, intenta de nuevo</string>
+    <string name="not_network_available">No hay conexión con la red</string>
+
+</resources>

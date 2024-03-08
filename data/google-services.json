@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "905546958981",
+    "project_id": "test-stori",
+    "storage_bucket": "test-stori.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:905546958981:android:74d04185a04ec7a03901ec",
+        "android_client_info": {
+          "package_name": "com.gilberto.test"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzOtknQSdSziZ7JDxhJJcwdZnvHCktsZc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

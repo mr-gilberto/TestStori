@@ -1,0 +1,18 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Custom.Theme.Test" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.Test" parent="Custom.Theme.Test">
+        <item name="windowSplashScreenBackground">@color/background_splash</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/workers</item>
+        <item name="windowSplashScreenAnimationDuration">200</item>
+        <item name="postSplashScreenTheme">@style/Custom.Theme.Test</item>
+    </style>
+
+    <style name="Theme.Test.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/background_splash</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+        <item name="postSplashScreenTheme">@style/Custom.Theme.Test</item>
+    </style>
+    
+</resources>
