@@ -86,6 +86,7 @@ object Libs {
         const val analytics = "com.google.firebase:firebase-analytics:${Versions.analytics}"
         const val guavaAndroid = "com.google.guava:guava:${Versions.guavaAndroid}"
         const val firebaseDatabase = "com.google.firebase:firebase-database-ktx"
+        const val firestoreDatabase = "com.google.firebase:firebase-firestore"
         const val firebaseStorage = "com.google.firebase:firebase-storage-ktx"
         const val firebaseAuth = "com.google.firebase:firebase-auth-ktx"
         const val firebaseBom = "com.google.firebase:firebase-bom:${Versions.firebaseBom}"

@@ -5,9 +5,10 @@ import androidx.annotation.StringRes
 data class RegisterState(
     val loading: Boolean = false,
     val errorState: ErrorState? = null,
-    val navigateToMainView: Boolean = false,
+    val successRegister: Boolean = false,
 )
 
 data class ErrorState(
     @StringRes val snackError: Int? = null,
+    val error: String? = null,
 )

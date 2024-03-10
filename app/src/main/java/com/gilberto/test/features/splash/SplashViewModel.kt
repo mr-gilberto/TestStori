@@ -2,7 +2,7 @@ package com.gilberto.test.features.splash
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.gilberto.domain.usecase.ObserveUserInfoUseCase
+import com.gilberto.domain.usecase.ObserveMovements
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 class SplashViewModel @Inject constructor(
-    private val observeUserInfoUseCase: ObserveUserInfoUseCase,
+    private val observeUserInfoUseCase: ObserveMovements,
 ) : ViewModel() {
 
     private val internalUiState = MutableStateFlow(SplashState())

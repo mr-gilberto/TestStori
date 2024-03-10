@@ -6,6 +6,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.gilberto.navigation.Route
+import com.gilberto.test.features.media.TakePictureRoute
 
 class RegisterRoute : Route(ROUTE) {
 
@@ -21,14 +22,14 @@ class RegisterRoute : Route(ROUTE) {
             viewState.value.errorState,
         )
 
-        LaunchedEffect(key1 = viewState.value.navigateToMainView) {
-            if (viewState.value.navigateToMainView) {
-                /*     navController.navigate(HomeRoute.ROUTE) {
-                         launchSingleTop = true
-                         popUpTo(ROUTE) {
-                             inclusive = true
-                         }
-                     } */
+        LaunchedEffect(key1 = viewState.value.successRegister) {
+            if (viewState.value.successRegister) {
+                navController.navigate(TakePictureRoute.ROUTE) {
+                    launchSingleTop = true
+                    popUpTo(ROUTE) {
+                        inclusive = true
+                    }
+                }
                 viewModel.onNavigate()
             }
         }

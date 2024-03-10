@@ -3,6 +3,7 @@ plugins {
     id("com.google.dagger.hilt.android")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    id("com.google.gms.google-services")
 }
 
 
@@ -25,6 +26,10 @@ android {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
+
+        debug {
+            isMinifyEnabled = false
+        }
     }
 
     compileOptions {
@@ -43,6 +48,7 @@ android {
 
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 
 }
@@ -79,7 +85,6 @@ dependencies {
     implementation(Libs.AndroidX.materialIconsExtended)
 
     implementation(Libs.Hilt.hiltAndroid)
-    implementation(Libs.ThirdPartyLib.crashlytics)
 
     kapt(Libs.Hilt.hiltCompiler)
     kapt(Libs.Hilt.hiltAndroidCompiler)

@@ -4,6 +4,7 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
+import kotlin.random.Random
 
 
 object Colors {
@@ -54,6 +55,14 @@ object Colors {
     val darkCardAccentContainer = Color(0xFF004D65)
     val darkOnCardAccentContainer = Color(0xFFBEE9FF)
 
+
+    fun getRandomColorFromColorsObject(): Color {
+        val colorList = listOf(
+            Color(0xFF4FC3F7),
+        )
+
+        return colorList[Random.nextInt(colorList.size)]
+    }
 }
 
 

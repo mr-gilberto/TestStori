@@ -6,6 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gilberto.domain.usecase.RegisterUseCase
+import com.gilberto.domain.usecase.UpdateProfileUseCase
 import com.gilberto.test.R
 import com.gilberto.test.util.NetworkManager
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,6 +19,7 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class RegisterViewModel @Inject constructor(
     private val registerUseCase: RegisterUseCase,
+    private val updateProfileUseCase: UpdateProfileUseCase,
     private val networkManager: NetworkManager,
 ) : ViewModel() {
 
@@ -41,23 +43,47 @@ class RegisterViewModel @Inject constructor(
 
                     registerUseCase(RegisterUseCase.Params(user, password))
                         .onSuccess {
-                            internalUiState.value = internalUiState.value.copy(
-                                navigateToMainView = true,
-                                errorState = null,
+                            updateProfile(
+                                registerState.name.trim(),
+                                registerState.surname.trim()
                             )
                         }.onFailure {
+                            val error = if (it.message != null) {
+                                ErrorState(error = it.message)
+                            } else {
+                                ErrorState(snackError = R.string.generic_error)
+                            }
                             internalUiState.value = internalUiState.value.copy(
-                                navigateToMainView = false,
-                                errorState = ErrorState(snackError = R.string.error_invalid_login),
+                                successRegister = false,
+                                errorState = error
                             )
                         }
                 }
             }
         } else {
             internalUiState.value = internalUiState.value.copy(
-                navigateToMainView = false,
+                successRegister = false,
                 errorState = ErrorState(snackError = R.string.not_network_available),
             )
+        }
+    }
+
+    private fun updateProfile(name: String, surname: String) {
+        viewModelScope.launch {
+            val fullName = "$name $surname"
+            updateProfileUseCase(UpdateProfileUseCase.Params(fullName))
+                .onSuccess {
+                    internalUiState.value = internalUiState.value.copy(
+                        successRegister = true,
+                        errorState = null,
+                    )
+                }.onFailure {
+                    // User Create, let's skip the userUpdate for this time. We should ask for the data later.
+                    internalUiState.value = internalUiState.value.copy(
+                        successRegister = true,
+                        errorState = null,
+                    )
+                }
         }
     }
 
@@ -92,7 +118,7 @@ class RegisterViewModel @Inject constructor(
     }
 
     fun onNavigate() {
-        internalUiState.value = internalUiState.value.copy(navigateToMainView = false)
+        internalUiState.value = internalUiState.value.copy(successRegister = false)
     }
 
     fun onViewEvent(event: RegistrationFormEvent) {

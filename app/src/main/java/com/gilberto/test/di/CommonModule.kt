@@ -2,7 +2,6 @@ package com.gilberto.test.di
 
 import android.content.Context
 import com.gilberto.domain.common.base.AppDispatchers
-import com.gilberto.test.features.media.photo.utils.FileManager
 import com.gilberto.test.util.NetworkManager
 import dagger.Module
 import dagger.Provides
@@ -27,8 +26,4 @@ class CommonModule {
         return NetworkManager(context)
     }
 
-    @Provides
-    fun provideFileManager(@ApplicationContext context: Context): FileManager {
-        return FileManager(context)
-    }
 }

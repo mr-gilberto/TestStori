@@ -11,6 +11,7 @@
     <string name="register">REGISTRARSE</string>
     <string name="dismiss">Cerrar</string>
 
+    <string name="no_services_found">No se encontraron resultados en la busqueda</string>
 
     <string name="error_empty_field">Campo obligatorio</string>
     <string name="error_invalid_name">Introduce tu nombre</string>
@@ -23,5 +24,9 @@
     <string name="error_invalid_login">Usuario o contraseña incorrectos</string>
     <string name="generic_error">Ocurrio un error, intenta de nuevo</string>
     <string name="not_network_available">No hay conexión con la red</string>
+    <string name="send_picture">Enviar foto</string>
+    <string name="capture_image_from_camera">Capturar Imagen</string>
+    <string name="require_permissions">Necesitas otorgar permisos</string>
+    <string name="require_picture">Tu cuenta ha sido creada exitosamente\nPor favor, para continuar con tu registro, toma una foto de tu identificación</string>
 
 </resources>

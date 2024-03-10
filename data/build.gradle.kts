@@ -54,8 +54,9 @@ dependencies {
     implementation(Libs.Kotlin.coroutinesAndroid)
 
     implementation(platform(Libs.ThirdPartyLib.firebaseBom))
-    implementation(Libs.ThirdPartyLib.firebaseDatabase)
+    implementation(Libs.ThirdPartyLib.firestoreDatabase)
     implementation(Libs.ThirdPartyLib.firebaseStorage)
     implementation(Libs.ThirdPartyLib.firebaseAuth)
 }
+
 

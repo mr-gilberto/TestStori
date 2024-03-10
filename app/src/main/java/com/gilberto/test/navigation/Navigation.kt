@@ -6,8 +6,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.gilberto.test.features.login.LoginRoute
+import com.gilberto.test.features.media.TakePictureRoute
 import com.gilberto.test.features.register.RegisterRoute
-import com.gilberto.test.features.register.RegisterScreen
 import com.gilberto.test.features.splash.SplashRoute
 
 @Composable
@@ -30,6 +30,12 @@ fun AppNavigation(
         }
 
         RegisterRoute().let { screen ->
+            composable(screen.route, screen.arguments) {
+                screen.Route(navController)
+            }
+        }
+
+        TakePictureRoute().let { screen ->
             composable(screen.route, screen.arguments) {
                 screen.Route(navController)
             }

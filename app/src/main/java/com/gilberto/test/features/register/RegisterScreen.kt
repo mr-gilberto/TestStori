@@ -51,8 +51,9 @@ fun RegisterScreen(
     Scaffold(
         snackbarHost = {
             errorState?.let { state ->
-                if (state.snackError != null) {
-                    SnackBarBase(stringResource(id = state.snackError)) {
+                val error = state.error ?: state.snackError?.let { stringResource(id = it) }
+                if (error != null) {
+                    SnackBarBase(error) {
                         onEvent.invoke(RegistrationFormEvent.OnSnackbarDismiss)
                     }
                 }
