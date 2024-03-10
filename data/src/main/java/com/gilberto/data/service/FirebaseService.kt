@@ -10,6 +10,8 @@ interface FirebaseService {
     suspend fun register(userName: String, password: String): Result<UserAuthData>
     suspend fun updateUserInfo(fullName: String): Result<UserAuthData>
     suspend fun uploadFile(imageUri: String): Result<Boolean>
+    suspend fun logOut(): Result<Boolean>
     suspend fun getCurrentUser(): Result<UserAuthData>
     suspend fun observeUserMovements(): Flow<List<MovementData>>
+    suspend fun observeUserMovement(movementId: String): Flow<MovementData>
 }

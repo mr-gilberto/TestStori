@@ -9,6 +9,7 @@ import com.gilberto.domain.usecase.RegisterUseCase
 import com.gilberto.domain.usecase.UpdateProfileUseCase
 import com.gilberto.test.R
 import com.gilberto.test.util.NetworkManager
+import com.gilberto.test.util.isValidMail
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -91,6 +92,7 @@ class RegisterViewModel @Inject constructor(
         val invalidName = registerState.name.isBlank()
         val invalidSurname = registerState.surname.isBlank()
         val invalidEmail = registerState.email.isBlank()
+        val invalidEmailFormat = !registerState.email.isValidMail()
         val invalidPassword = registerState.password.isBlank()
         val invalidRepeatedPassword = registerState.repeatedPassword.isBlank()
 
@@ -98,6 +100,7 @@ class RegisterViewModel @Inject constructor(
             invalidName -> R.string.error_invalid_name
             invalidSurname -> R.string.error_invalid_surname
             invalidEmail -> R.string.error_invalid_email
+            invalidEmailFormat -> R.string.error_invalid_email_format
             invalidPassword -> R.string.error_invalid_password
             invalidRepeatedPassword -> R.string.error_invalid_repeated_password
             registerState.password != registerState.repeatedPassword -> {
@@ -159,3 +162,4 @@ class RegisterViewModel @Inject constructor(
         }
     }
 }
+

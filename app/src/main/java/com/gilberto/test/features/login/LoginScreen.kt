@@ -41,6 +41,7 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.navigation.compose.rememberNavController
 import com.gilberto.test.R
+import com.gilberto.test.features.view.SnackBarBase
 import com.gilberto.test.theme.AppTheme
 
 
@@ -56,7 +57,7 @@ fun LoginScreen(
         snackbarHost = {
             errorState?.let { state ->
                 if (state.snackError != null) {
-                  //  SnackBarBase(stringResource(id = state.snackError), onActionSnackBar)
+                  SnackBarBase(stringResource(id = state.snackError), onActionSnackBar)
                 }
             }
         },
@@ -125,8 +126,8 @@ fun Logo(modifier: Modifier) {
 
 @Composable
 fun Inputs(modifier: Modifier, onLogIn: (email: String, password: String) -> Unit, onRegister: () -> Unit) {
-    var email by rememberSaveable { mutableStateOf("CEIBASCH-08") }
-    var password by rememberSaveable { mutableStateOf("password") }
+    var email by rememberSaveable { mutableStateOf("ibtz.gilbert@gmail.com") }
+    var password by rememberSaveable { mutableStateOf("password12") }
 
     Column(modifier = modifier) {
         OutlinedTextField(

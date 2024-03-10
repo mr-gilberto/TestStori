@@ -100,9 +100,9 @@ class FirebaseServiceImpl @Inject constructor(
 
     override suspend fun observeUserMovements(): Flow<List<MovementData>> = callbackFlow {
         val user = firebaseAuth.currentUser ?: throw Exception(USER_NOT_FOUND_ERROR_MESSAGE)
-        val booksRef = firebaseFirestore.collection("users").document(user.uid).collection("movements")
+        val reference = firebaseFirestore.collection("users").document(user.uid).collection("movements")
 
-        val listener = booksRef.addSnapshotListener { snapshot, exception ->
+        val listener = reference.addSnapshotListener { snapshot, exception ->
             if (exception != null) {
                 close(exception)
                 return@addSnapshotListener
@@ -113,14 +113,13 @@ class FirebaseServiceImpl @Inject constructor(
             if (snapshot != null && !snapshot.isEmpty) {
                 for (document in snapshot.documents) {
                     val transactionNumber = document.getString(TRANSACTION_NUMBER_FIELD) ?: ""
-                    val date = document.getString(DATE_FIELD) ?: ""
-                    val type = document.getString(TYPE_FIELD) ?: ""
+                    val date = document.getTimestamp(DATE_FIELD)?.toDate()?.time ?: 0
+                    val type = document.getBoolean(TYPE_FIELD) ?: false
                     val description = document.getString(DESCRIPTION_FIELD) ?: ""
-                    val amount = document.getString(AMOUNT_FIELD) ?: ""
-                    val category = document.getString(CATEGORY_FIELD) ?: ""
-                    val balance = document.getString(BALANCE_FIELD) ?: ""
+                    val amount = document.getDouble(AMOUNT_FIELD) ?: 0.0
+                    val balance = document.getDouble(BALANCE_FIELD) ?: 0.0
 
-                    val movement = MovementData(transactionNumber, date, type, description, amount, balance)
+                    val movement = MovementData(transactionNumber, date, type, description, amount, balance, document.id)
                     movements.add(movement)
                 }
             }
@@ -133,6 +132,60 @@ class FirebaseServiceImpl @Inject constructor(
         }
     }
 
+    override suspend fun observeUserMovement(movementId: String): Flow<MovementData> = callbackFlow {
+        val user = firebaseAuth.currentUser ?: throw Exception(USER_NOT_FOUND_ERROR_MESSAGE)
+
+        val reference = firebaseFirestore.collection("users").document(user.uid).collection("movements").document(movementId)
+
+        val listener = reference.addSnapshotListener { snapshot, exception ->
+            if (exception != null) {
+                close(exception)
+                return@addSnapshotListener
+            }
+
+            val movement = if (snapshot != null && snapshot.exists()) {
+                val transactionNumber = snapshot.getString(TRANSACTION_NUMBER_FIELD) ?: ""
+                val date = snapshot.getTimestamp(DATE_FIELD)?.toDate()?.time ?: 0
+                val type = snapshot.getBoolean(TYPE_FIELD) ?: false
+                val description = snapshot.getString(DESCRIPTION_FIELD) ?: ""
+                val amount = snapshot.getDouble(AMOUNT_FIELD) ?: 0.0
+                val balance = snapshot.getDouble(BALANCE_FIELD) ?: 0.0
+
+                MovementData(transactionNumber, date, type, description, amount, balance, snapshot.id)
+            } else {
+                null
+            }
+
+            if (movement != null) {
+                trySend(movement)
+            } else {
+                close(Exception("Error empty"))
+            }
+        }
+
+        awaitClose {
+            listener.remove()
+        }
+    }
+
+    override suspend fun logOut(): Result<Boolean> =
+        suspendCancellableCoroutine { continuation ->
+            firebaseAuth.signOut()
+            var authListener: FirebaseAuth.AuthStateListener? = null
+            authListener = FirebaseAuth.AuthStateListener {
+                if (continuation.isActive) {
+                    authListener?.let { auth -> firebaseAuth.removeAuthStateListener(auth) }
+                    if (firebaseAuth.currentUser == null) {
+                        continuation.resume(Result.success(true))
+                    } else {
+                        continuation.resume(Result.success(false))
+                    }
+                }
+            }
+
+            firebaseAuth.addAuthStateListener(authListener)
+        }
+
     companion object {
         private const val UNKNOWN_ERROR_MESSAGE = "Unknown Error"
         private const val USER_NOT_FOUND_ERROR_MESSAGE = "User Not Found"
@@ -142,7 +195,6 @@ class FirebaseServiceImpl @Inject constructor(
         private const val TYPE_FIELD = "type"
         private const val DESCRIPTION_FIELD = "description"
         private const val AMOUNT_FIELD = "amount"
-        private const val CATEGORY_FIELD = "category"
         private const val BALANCE_FIELD = "balance"
     }
 }

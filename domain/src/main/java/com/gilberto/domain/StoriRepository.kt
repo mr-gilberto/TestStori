@@ -12,4 +12,6 @@ interface StoriRepository {
     suspend fun uploadImage(imageUri: String): Result<Boolean>
     suspend fun getCurrentUser(): Result<UserEntity>
     suspend fun observeMovements(): Flow<List<MovementEntity>>
+    suspend fun observeMovement(documentId: String): Flow<MovementEntity>
+    suspend fun logOut(): Result<Boolean>
 }

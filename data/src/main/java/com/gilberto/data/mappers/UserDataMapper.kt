@@ -15,8 +15,9 @@ fun UserAuthData.toDomain() = UserEntity(
 fun MovementData.toDomain() = MovementEntity(
     transactionNumber = transactionNumber,
     date = date,
-    type = type,
-    description = description,
-    amount = amount,
-    balance = balance,
+    type = type ?: false,
+    description = description  ?: "",
+    amount = amount?: 0.0,
+    balance = balance?: 0.0,
+    documentId = documentId
 )

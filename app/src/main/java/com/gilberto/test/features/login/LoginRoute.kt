@@ -6,6 +6,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.gilberto.navigation.Route
+import com.gilberto.test.features.home.main.HomeRoute
 import com.gilberto.test.features.register.RegisterRoute
 
 class LoginRoute : Route(ROUTE) {
@@ -33,12 +34,12 @@ class LoginRoute : Route(ROUTE) {
 
         LaunchedEffect(key1 = viewState.value.navigateToMainView) {
             if (viewState.value.navigateToMainView) {
-           /*     navController.navigate(HomeRoute.ROUTE) {
+                navController.navigate(HomeRoute.ROUTE) {
                     launchSingleTop = true
                     popUpTo(ROUTE) {
                         inclusive = true
                     }
-                } */
+                }
                 viewModel.onNavigate()
             }
         }

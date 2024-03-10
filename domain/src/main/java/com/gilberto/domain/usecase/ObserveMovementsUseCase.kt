@@ -5,7 +5,7 @@ import com.gilberto.domain.models.MovementEntity
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 
-class ObserveMovements @Inject constructor(
+class ObserveMovementsUseCase @Inject constructor(
     private val storiRepository: StoriRepository,
 ) {
     suspend operator fun invoke(): Flow<List<MovementEntity>> =

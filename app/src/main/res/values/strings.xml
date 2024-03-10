@@ -10,14 +10,24 @@
     <string name="log_in">INICIAR SESIÓN</string>
     <string name="register">REGISTRARSE</string>
     <string name="dismiss">Cerrar</string>
+    <string name="logout">Cerrar sesión</string>
 
-    <string name="no_services_found">No se encontraron resultados en la busqueda</string>
+    <string name="movements">Lista de movimientos</string>
+    <string name="no_movements">No tienes movimientos en tu cuenta</string>
+
+    <string name="details">Detalles</string>
+    <string name="identifier">Numero de transacción: </string>
+    <string name="description">Descripción: </string>
+    <string name="date">Fecha: </string>
+    <string name="amount">Monto: </string>
+    <string name="balance">Balance de la cuenta: </string>
 
     <string name="error_empty_field">Campo obligatorio</string>
     <string name="error_invalid_name">Introduce tu nombre</string>
     <string name="error_invalid_surname">Introduce tu apellido</string>
     <string name="error_invalid_user">Introduce tu usuario</string>
-    <string name="error_invalid_email">Introduce un email valido</string>
+    <string name="error_invalid_email">Introduce un email</string>
+    <string name="error_invalid_email_format">Introduce un email valido</string>
     <string name="error_invalid_password">Introduce tu contraseña</string>
     <string name="error_invalid_repeated_password">Introduce tu contraseña repetida</string>
     <string name="error_invalid_not_match_password">La contraseña no coincide</string>
