@@ -40,7 +40,6 @@ import com.gilberto.test.R
 import com.gilberto.test.features.view.SnackBarBase
 import com.gilberto.test.theme.AppTheme
 
-
 @Composable
 fun RegisterScreen(
     formState: RegistrationFormState = RegistrationFormState(),

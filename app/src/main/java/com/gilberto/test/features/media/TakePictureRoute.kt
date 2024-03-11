@@ -5,7 +5,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.gilberto.navigation.Route
+import com.gilberto.test.navigation.Route
 import com.gilberto.test.features.home.main.HomeRoute
 
 class TakePictureRoute : Route(ROUTE) {

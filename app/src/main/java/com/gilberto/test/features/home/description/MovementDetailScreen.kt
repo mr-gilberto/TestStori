@@ -1,4 +1,4 @@
-package com.integrapsim.features.service.description
+package com.gilberto.test.features.home.description
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -18,8 +18,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccessTime
 import androidx.compose.material.icons.filled.AccountBalance
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Build
-import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -41,7 +39,6 @@ import androidx.compose.ui.unit.dp
 import com.gilberto.domain.common.base.toStringOrEmpty
 import com.gilberto.domain.models.MovementEntity
 import com.gilberto.test.R
-import com.gilberto.test.features.home.description.MovementDetailUiState
 import com.gilberto.test.theme.AppTheme
 import com.gilberto.test.theme.Colors
 import com.gilberto.test.util.convertToDateFormat

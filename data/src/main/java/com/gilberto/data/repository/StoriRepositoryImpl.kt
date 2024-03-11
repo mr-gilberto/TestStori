@@ -10,45 +10,45 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 class StoriRepositoryImpl @Inject constructor(
-    private val firebaseSerivce: FirebaseService,
+    private val firebaseService: FirebaseService,
 ) : StoriRepository {
 
     override suspend fun login(email: String, password: String): Result<UserEntity> =
-        firebaseSerivce.login(email, password).map {
+        firebaseService.login(email, password).map {
             it.toDomain()
         }
 
     override suspend fun register(email: String, password: String): Result<UserEntity> =
-        firebaseSerivce.register(email, password).map {
+        firebaseService.register(email, password).map {
             it.toDomain()
         }
 
     override suspend fun updateUserInfo(fullName: String): Result<UserEntity> =
-        firebaseSerivce.updateUserInfo(fullName).map {
+        firebaseService.updateUserInfo(fullName).map {
             it.toDomain()
         }
 
     override suspend fun uploadImage(imageUri: String): Result<Boolean> =
-        firebaseSerivce.uploadFile(imageUri)
+        firebaseService.uploadFile(imageUri)
 
     override suspend fun getCurrentUser(): Result<UserEntity> =
-        firebaseSerivce.getCurrentUser().map {
+        firebaseService.getCurrentUser().map {
             it.toDomain()
         }
 
     override suspend fun observeMovements(): Flow<List<MovementEntity>> =
-        firebaseSerivce.observeUserMovements().map {
+        firebaseService.observeUserMovements().map {
             it.map {
                 it.toDomain()
             }
         }
 
     override suspend fun observeMovement(documentId: String): Flow<MovementEntity> =
-        firebaseSerivce.observeUserMovement(documentId).map {
+        firebaseService.observeUserMovement(documentId).map {
             it.toDomain()
         }
 
     override suspend fun logOut(): Result<Boolean> {
-        return firebaseSerivce.logOut()
+        return firebaseService.logOut()
     }
 }

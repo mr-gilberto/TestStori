@@ -10,7 +10,5 @@ data class LoginState(
 )
 
 data class ErrorState(
-    @StringRes val emailError: Int? = null,
-    @StringRes val passwordError: Int? = null,
     @StringRes val snackError: Int? = null,
 )

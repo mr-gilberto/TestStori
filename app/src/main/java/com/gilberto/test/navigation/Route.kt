@@ -1,4 +1,4 @@
-package com.gilberto.navigation
+package com.gilberto.test.navigation
 
 import androidx.navigation.NamedNavArgument
 

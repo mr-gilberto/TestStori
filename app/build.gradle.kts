@@ -94,4 +94,17 @@ dependencies {
     implementation(Libs.ThirdPartyLib.guavaAndroid)
 
     testImplementation(TestLibs.UnitTest.junit4)
+    testImplementation(TestLibs.UnitTest.junit4)
+
+
+
+    testImplementation(TestLibs.UnitTest.mockito)
+    testImplementation(TestLibs.UnitTest.mockitoKotlin)
+    testImplementation(TestLibs.UnitTest.coroutines)
+    testImplementation(TestLibs.UnitTest.mockitoInline)
+    testImplementation(TestLibs.UnitTest.mockKk)
+
+
+    androidTestImplementation(TestLibs.UnitTest.mockitoAndroid )
+    androidTestImplementation(TestLibs.UnitTest.mockito)
 }

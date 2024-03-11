@@ -82,6 +82,13 @@ object Versions {
 
     //region Test
     const val junit4 = "4.13.2"
+    const val mockito = "4.1.0"
+    const val mockitoKotlin = "2.2.0"
+    const val mockitoInline = "3.11.2"
+    const val mockK = "1.13.10"
+
+    const val mockitoAndroid = "5.8.0"
+    const val coroutinesTest = "1.7.3"
     //endregion
 
     //region plugins

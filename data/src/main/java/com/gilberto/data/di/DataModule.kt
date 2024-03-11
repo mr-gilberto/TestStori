@@ -1,4 +1,4 @@
-package com.gilberto.test.di
+package com.gilberto.data.di
 
 import com.gilberto.data.repository.StoriRepositoryImpl
 import com.gilberto.data.service.FirebaseService

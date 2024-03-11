@@ -7,9 +7,8 @@ import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.navArgument
-import com.gilberto.navigation.Route
+import com.gilberto.test.navigation.Route
 import com.gilberto.test.util.Arguments
-import com.integrapsim.features.service.description.MovementDetail
 
 class MovementDetailRoute(
     arguments: List<NamedNavArgument> = listOf(
